@@ -139,6 +139,7 @@ def render_email_html_message(snapshot: HighlightSnapshot) -> str:
                         f"<img src='{chart_uri}' alt='chart {escape(item.name)}' width='120' height='32' "
                         "style='display:block;max-width:100%;height:auto;border-radius:8px;'>"
                     )
+                chart_cell_html = chart_html or "<div style='height:32px;'></div>"
 
                 item_rows.append(
                     "<div style='padding:12px 0;border-bottom:1px solid #f1f5f9;'>"
@@ -163,7 +164,7 @@ def render_email_html_message(snapshot: HighlightSnapshot) -> str:
                     "style='border-collapse:collapse;width:100%;'>"
                     "<tr>"
                     "<td style='vertical-align:middle;'>"
-                    f"{chart_html or '<div style=\"height:32px;\"></div>'}"
+                    f"{chart_cell_html}"
                     "</td>"
                     f"<td style='vertical-align:middle;text-align:right;padding-left:12px;font-size:14px;line-height:20px;font-weight:700;color:{color};white-space:nowrap;'>{escape(item.percent_text)}</td>"
                     "</tr>"
