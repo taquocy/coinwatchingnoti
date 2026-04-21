@@ -1,0 +1,18 @@
+[Unit]
+Description=CoinGecko Highlights Notifier
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__RUN_USER__
+Group=__RUN_GROUP__
+WorkingDirectory=__PROJECT_DIR__
+Environment=PYTHONUNBUFFERED=1
+ExecStart=__PYTHON_PATH__ __PROJECT_DIR__/main.py
+Restart=always
+RestartSec=15
+StartLimitIntervalSec=0
+
+[Install]
+WantedBy=multi-user.target
