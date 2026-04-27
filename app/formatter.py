@@ -88,9 +88,7 @@ def render_text_message(snapshot: HighlightSnapshot) -> str:
 
 def render_telegram_message(snapshot: HighlightSnapshot) -> str:
     blocks = [
-        "<b>CoinGecko Highlights</b>",
         f"<b>Thời gian:</b> {escape(snapshot.fetched_at.strftime('%Y-%m-%d %H:%M:%S'))}",
-        f"<b>Nguồn:</b> {escape(snapshot.source_url)}",
         "",
     ]
 
