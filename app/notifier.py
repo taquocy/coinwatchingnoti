@@ -77,7 +77,7 @@ def send_telegram_photo(settings: Settings, caption_html: str, image_bytes: byte
     logger.info("Telegram photo sent successfully.")
 
 
-def send_email(settings: Settings, message_text: str, message_html: str) -> None:
+def send_email(settings: Settings, message_text: str, message_html: str, subject: str | None = None) -> None:
     if not settings.email_enabled:
         logger.info("Email sending is disabled by EMAIL_ENABLED=false.")
         return
@@ -94,7 +94,7 @@ def send_email(settings: Settings, message_text: str, message_html: str) -> None
         return
 
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = settings.email_subject
+    msg["Subject"] = subject or settings.email_subject
     msg["From"] = settings.email_from
     msg["To"] = ", ".join(settings.email_to)
 
